@@ -1,6 +1,6 @@
 package com.calclavia.minecraft.redstone;
 
-import com.calclavia.graph.api.Node;
+import com.calclavia.graph.node.Node;
 import nova.core.block.Block;
 import nova.core.util.Direction;
 
