@@ -36,7 +36,7 @@ public class RedstoneAPI implements Loadable {
 		//Registers Redstone Node
 		componentManager.register(args -> args.length > 0 ? new NodeRedstone((Block) args[0]) : new NodeRedstone(dummy));
 
-		WrapperEventManager.instance.onCanConnect.add(evt -> evt.canConnect = getRedstoneNode(evt.world, evt.position).map(n -> n.canConnect(evt.direction)).orElseGet(() -> false));
+		WrapperEventManager.instance.onCanConnect.add(evt -> evt.canConnect = getRedstoneNode(evt.world, evt.position).map(n -> n.canConnect.apply(null)).orElseGet(() -> false));
 
 		WrapperEventManager.instance.onStrongPower.add(evt -> evt.power = getRedstoneNode(evt.world, evt.position).map(n -> n.getOutputStrongPower()).orElseGet(() -> 0));
 

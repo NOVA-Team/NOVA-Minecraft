@@ -1,14 +1,9 @@
 package com.calclavia.minecraft.redstone;
 
 import nova.core.block.Block;
-import nova.core.component.Component;
-import nova.core.util.Direction;
 import nova.wrapper.mc1710.wrapper.block.world.BWWorld;
 
-import java.util.Collections;
-import java.util.Set;
 import java.util.function.Consumer;
-import java.util.function.Function;
 import java.util.stream.IntStream;
 
 /**
@@ -16,9 +11,8 @@ import java.util.stream.IntStream;
  * @author Calclavia
  */
 //TODO: Create NodeVirtualRedstone (for MC blocks that are redstone, but don't implement NOVA)
-public class NodeRedstone extends Component implements Redstone {
+public class NodeRedstone extends Redstone {
 	public final Block block;
-	public Function<Direction, Boolean> canConnect = dir -> true;
 	private boolean init = false;
 	private int inputStrongPower = 0;
 	private int inputWeakPower = 0;
@@ -32,23 +26,6 @@ public class NodeRedstone extends Component implements Redstone {
 		this.block = block;
 		//Hook into the block's events.
 		block.neighborChangeEvent.add(evt -> recache());
-	}
-
-	@Override
-	public NodeRedstone setCanConnect(Function<Direction, Boolean> canConnect) {
-		this.canConnect = canConnect;
-		return this;
-	}
-
-	@Override
-	public boolean canConnect(Direction dir) {
-		return canConnect.apply(dir);
-	}
-
-	@Override
-	public Set<Redstone> connections() {
-		//TODO: Wrong implementation
-		return Collections.emptySet();
 	}
 
 	@Override
