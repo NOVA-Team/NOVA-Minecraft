@@ -45,6 +45,6 @@ public class RedstoneAPI implements Loadable {
 
 	public Optional<Redstone> getRedstoneNode(World world, Vector3i pos) {
 		Optional<Block> blockOptional = world.getBlock(pos);
-		return blockOptional.map(block -> block.get(Redstone.class));
+		return blockOptional.flatMap(block -> block.getOp(Redstone.class));
 	}
 }
