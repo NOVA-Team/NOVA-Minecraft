@@ -25,8 +25,8 @@ public abstract class Redstone extends Connectable<Redstone> {
 	public abstract int getOutputStrongPower();
 
 	/**
-	 * @param power The power value between 0 to 16
 	 * Sets the block to output strong Redstone power.
+	 * @param power The power value between 0 to 16
 	 */
 	public abstract void setOutputStrongPower(int power);
 
@@ -53,6 +53,7 @@ public abstract class Redstone extends Connectable<Redstone> {
 
 	/**
 	 * Sets the block to output weak Redstone power.
+	 * @param power The output power
 	 */
 	public abstract void setOutputWeakPower(int power);
 }
