@@ -38,9 +38,9 @@ public class RedstoneAPI implements Loadable {
 
 		WrapperEventManager.instance.onCanConnect.add(evt -> evt.canConnect = getRedstoneNode(evt.world, evt.position).map(n -> n.canConnect.apply(null)).orElseGet(() -> false));
 
-		WrapperEventManager.instance.onStrongPower.add(evt -> evt.power = getRedstoneNode(evt.world, evt.position).map(n -> n.getOutputStrongPower()).orElseGet(() -> 0));
+		WrapperEventManager.instance.onStrongPower.add(evt -> evt.power = getRedstoneNode(evt.world, evt.position).map(Redstone::getOutputStrongPower).orElseGet(() -> 0));
 
-		WrapperEventManager.instance.onWeakPower.add(evt -> evt.power = getRedstoneNode(evt.world, evt.position).map(n -> n.getOutputWeakPower()).orElseGet(() -> 0));
+		WrapperEventManager.instance.onWeakPower.add(evt -> evt.power = getRedstoneNode(evt.world, evt.position).map(Redstone::getOutputWeakPower).orElseGet(() -> 0));
 	}
 
 	public Optional<Redstone> getRedstoneNode(World world, Vector3i pos) {

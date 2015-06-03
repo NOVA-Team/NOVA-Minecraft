@@ -29,6 +29,16 @@ public class NodeRedstone extends Redstone {
 	}
 
 	@Override
+	public int getInputWeakPower() {
+		return inputWeakPower;
+	}
+
+	@Override
+	public int getInputStrongPower() {
+		return inputStrongPower;
+	}
+
+	@Override
 	public void onInputPowerChange(Consumer<Redstone> action) {
 		onPowerChange = action;
 	}
@@ -38,7 +48,7 @@ public class NodeRedstone extends Redstone {
 		if (!init) {
 			recache();
 		}
-		return inputStrongPower;
+		return outputStrongPower;
 	}
 
 	@Override
@@ -60,7 +70,7 @@ public class NodeRedstone extends Redstone {
 		if (!init) {
 			recache();
 		}
-		return inputWeakPower;
+		return outputWeakPower;
 	}
 
 	@Override
