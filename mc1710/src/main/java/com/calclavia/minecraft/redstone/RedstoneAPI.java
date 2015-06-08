@@ -4,7 +4,7 @@ import nova.core.block.Block;
 import nova.core.component.ComponentManager;
 import nova.core.loader.Loadable;
 import nova.core.loader.NativeLoader;
-import nova.core.util.transform.vector.Vector3i;
+import org.apache.commons.math3.geometry.euclidean.threed.Vector3D;
 import nova.core.world.World;
 import nova.wrapper.mc1710.util.WrapperEventManager;
 
@@ -43,7 +43,7 @@ public class RedstoneAPI implements Loadable {
 		WrapperEventManager.instance.onWeakPower.add(evt -> evt.power = getRedstoneNode(evt.world, evt.position).map(Redstone::getOutputWeakPower).orElseGet(() -> 0));
 	}
 
-	public Optional<Redstone> getRedstoneNode(World world, Vector3i pos) {
+	public Optional<Redstone> getRedstoneNode(World world, Vector3D pos) {
 		Optional<Block> blockOptional = world.getBlock(pos);
 		return blockOptional.flatMap(block -> block.getOp(Redstone.class));
 	}
