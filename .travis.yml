@@ -7,7 +7,7 @@ install:
   - ""
 script:
   - ./gradlew --continue check javadoc jacocoTestReport
-  - bash <(curl -s https://codecov.io/bash) || echo
+  - bash <(curl -s https://codecov.io/bash) || true
   - find ~/.gradle/ -name *.lock -print0 | xargs -0 rm -f
 
 cache:
