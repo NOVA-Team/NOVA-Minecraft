@@ -1,4 +1,4 @@
-package redstone;
+package nova.minecraft.redstone;
 
 import nova.core.block.Block;
 import nova.core.component.ComponentManager;

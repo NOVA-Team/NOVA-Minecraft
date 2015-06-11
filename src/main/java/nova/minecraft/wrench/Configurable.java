@@ -1,4 +1,4 @@
-package com.calclavia.minecraft.wrench;
+package nova.minecraft.wrench;
 
 import nova.core.component.Component;
 import nova.core.entity.Entity;

@@ -1,11 +1,11 @@
-package com.calclavia.minecraft.redstone;
+package nova.minecraft.redstone;
 
 import nova.core.block.Block;
 import nova.core.component.ComponentManager;
 import nova.core.loader.Loadable;
 import nova.core.loader.NativeLoader;
 import nova.core.world.World;
-import nova.wrapper.mc1710.util.WrapperEventManager;
+import nova.wrapper.mc18.util.WrapperEventManager;
 import org.apache.commons.math3.geometry.euclidean.threed.Vector3D;
 
 import java.util.Optional;

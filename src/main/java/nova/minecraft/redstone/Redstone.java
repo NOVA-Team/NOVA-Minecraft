@@ -1,4 +1,4 @@
-package com.calclavia.minecraft.redstone;
+package nova.minecraft.redstone;
 
 import nova.core.block.Block;
 import nova.core.block.component.Connectable;
