@@ -25,7 +25,7 @@ public class NodeRedstone extends Redstone {
 	public NodeRedstone(Block block) {
 		this.block = block;
 		//Hook into the block's events.
-		block.neighborChangeEvent.add(evt -> recache());
+		block.events.add(evt -> recache(), Block.NeighborChangeEvent.class);
 	}
 
 	@Override
