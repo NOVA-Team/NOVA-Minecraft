@@ -7,6 +7,7 @@
 # Sources
 !/src
 !/mc1710
+!/mc18
 
 # github
 !/.gitignore
