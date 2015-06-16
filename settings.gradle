@@ -1,2 +1,3 @@
 rootProject.name = 'minecraft'
 
+include "mc17", "mc18"
