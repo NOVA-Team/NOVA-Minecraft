@@ -18,11 +18,11 @@ import java.util.Optional;
 public class RedstoneAPI implements Loadable {
 
 	private final ComponentManager componentManager;
-	private final WrapperEventManager eventManager;
+	private final GlobalEvents events;
 
-	public RedstoneAPI(ComponentManager componentManager, WrapperEventManager eventManager) {
+	public RedstoneAPI(ComponentManager componentManager, GlobalEvents events) {
 		this.componentManager = componentManager;
-		this.eventManager = eventManager;
+		this.events = events;
 	}
 
 	@Override
@@ -38,11 +38,11 @@ public class RedstoneAPI implements Loadable {
 		//Registers Redstone Node
 		componentManager.register(args -> args.length > 0 ? new NodeRedstone((Block) args[0]) : new NodeRedstone(dummy));
 
-		eventManager.onCanConnect.add(evt -> evt.canConnect = getRedstoneNode(evt.world, evt.position).map(n -> n.canConnect.apply(null)).orElseGet(() -> false));
+		events.events.on(WrapperEvents.RedstoneConnectEvent.class).bind(evt -> evt.canConnect = getRedstoneNode(evt.world, evt.position).map(n -> n.canConnect.apply(null)).orElseGet(() -> false));
 
-		eventManager.onStrongPower.add(evt -> evt.power = getRedstoneNode(evt.world, evt.position).map(Redstone::getOutputStrongPower).orElseGet(() -> 0));
+		events.events.on(WrapperEvents.StrongRedstoneEvent.class).bind(evt -> evt.power = getRedstoneNode(evt.world, evt.position).map(Redstone::getOutputStrongPower).orElseGet(() -> 0));
 
-		eventManager.onWeakPower.add(evt -> evt.power = getRedstoneNode(evt.world, evt.position).map(Redstone::getOutputWeakPower).orElseGet(() -> 0));
+		events.events.on(WrapperEvents.WeakRedstoneEvent.class).bind(evt -> evt.power = getRedstoneNode(evt.world, evt.position).map(Redstone::getOutputWeakPower).orElseGet(() -> 0));
 	}
 
 	public Optional<Redstone> getRedstoneNode(World world, Vector3D pos) {
