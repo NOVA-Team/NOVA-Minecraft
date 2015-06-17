@@ -35,10 +35,10 @@ repositories {
 
 dependencies {
 	compile rootProject
-	compile group: "nova.core", name: "NovaCore", version: novaVersion, changing: true
-	runtime "nova.wrapper.mc18:NovaWrapper-MC1.8:0.1-SNAPSHOT"
+	compile group: "nova.core", name: "NovaCore", version: property("nova.version"), changing: true
+	runtime "nova.wrapper.mc18:NovaWrapper-MC1.8:0.1-SNAPSHOT:deobf"
 
-	testCompile group: "nova.core", name: "NovaCore", version: property("nova.core.version"), classifier: "wrappertests", changing: true
+	testCompile group: "nova.core", name: "NovaCore", version: property("nova.version"), classifier: "wrappertests", changing: true
 	testCompile "org.assertj:assertj-core:3.0.0"
 	testCompile "junit:junit:4.12"
 }
