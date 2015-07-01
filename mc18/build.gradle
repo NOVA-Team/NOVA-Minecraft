@@ -15,9 +15,8 @@ buildscript {
 	}
 }
 
+apply from: "https://raw.githubusercontent.com/NOVA-Team/NOVA-Gradle/master/shared-scripts/java.gradle"
 apply plugin: "forge"
-apply plugin: "idea"
-apply plugin: "eclipse"
 
 minecraft {
 	version = property("forge.version")
@@ -25,30 +24,10 @@ minecraft {
 	runDir = "run"
 }
 
-compileJava {
-    sourceCompatibility = '1.8'
-    targetCompatibility = '1.8'
-    options.encoding = 'UTF-8'
-    options.fork = true
-    //options.compilerArgs << '-Xlint'
-}
-
-repositories {
-	mavenLocal()
-	mavenCentral()
-	maven {
-		url "http://maven.novaapi.net/"
-	}
-}
-
 dependencies {
 	compile rootProject
 	compile group: "nova.core", name: "NovaCore", version: property("nova.version"), changing: true
 	compile "nova.wrapper.mc18:NovaWrapper-MC1.8:0.1-SNAPSHOT:deobf"
-
-	testCompile group: "nova.core", name: "NovaCore", version: property("nova.version"), classifier: "wrappertests", changing: true
-	testCompile "org.assertj:assertj-core:3.0.0"
-	testCompile "junit:junit:4.12"
 }
 
 processResources {
