@@ -15,7 +15,34 @@ buildscript {
 	}
 }
 
+apply plugin: "maven-publish"
+apply plugin: "com.jfrog.artifactory"
 apply from: "https://raw.githubusercontent.com/NOVA-Team/NOVA-Gradle/master/shared-scripts/java.gradle"
+
+publishing {
+	publications {
+		main(MavenPublication) {
+			from components.java
+
+			artifactId "NovaMinecraft-Wrapper-MC1.7.10"
+
+			artifact sourcesJar
+			artifact javadocJar
+
+			pom.withXml(writePom(project.properties))
+		}
+	}
+}
+
+artifactory {
+	publish {
+		defaults {
+			publications("main")
+			publishPom = true
+		}
+	}
+}
+
 apply plugin: "forge"
 
 minecraft {
