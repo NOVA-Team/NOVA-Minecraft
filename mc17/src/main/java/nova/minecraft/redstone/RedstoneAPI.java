@@ -39,11 +39,11 @@ public class RedstoneAPI implements Loadable {
 		//Registers Redstone Node
 		componentManager.register(args -> args.length > 0 ? new NodeRedstone((Block) args[0]) : new NodeRedstone(dummy));
 
-		events.events.on(WrapperEvents.RedstoneConnectEvent.class).bind(evt -> evt.canConnect = getRedstoneNode(evt.world, evt.position).map(n -> n.canConnect.apply(null)).orElseGet(() -> false));
+		events.on(WrapperEvents.RedstoneConnectEvent.class).bind(evt -> evt.canConnect = getRedstoneNode(evt.world, evt.position).map(n -> n.canConnect.apply(null)).orElseGet(() -> false));
 
-		events.events.on(WrapperEvents.StrongRedstoneEvent.class).bind(evt -> evt.power = getRedstoneNode(evt.world, evt.position).map(Redstone::getOutputStrongPower).orElseGet(() -> 0));
+		events.on(WrapperEvents.StrongRedstoneEvent.class).bind(evt -> evt.power = getRedstoneNode(evt.world, evt.position).map(Redstone::getOutputStrongPower).orElseGet(() -> 0));
 
-		events.events.on(WrapperEvents.WeakRedstoneEvent.class).bind(evt -> evt.power = getRedstoneNode(evt.world, evt.position).map(Redstone::getOutputWeakPower).orElseGet(() -> 0));
+		events.on(WrapperEvents.WeakRedstoneEvent.class).bind(evt -> evt.power = getRedstoneNode(evt.world, evt.position).map(Redstone::getOutputWeakPower).orElseGet(() -> 0));
 	}
 
 	public Optional<Redstone> getRedstoneNode(World world, Vector3D pos) {
