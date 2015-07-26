@@ -95,7 +95,7 @@ public class NodeRedstone extends Redstone {
 			hasChanged = true;
 		}
 
-		int newInputWeakPower = mcWorld().getStrongPower(new BlockPos(block.x(), block.y(), block.z()));
+		int newInputWeakPower = mcWorld().isBlockIndirectlyGettingPowered(new BlockPos(block.x(), block.y(), block.z()));
 		if (inputWeakPower != newInputWeakPower) {
 			inputWeakPower = newInputWeakPower;
 			hasChanged = true;
