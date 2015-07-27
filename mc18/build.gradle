@@ -43,6 +43,10 @@ artifactory {
 	}
 }
 
+artifacts {
+	archives jar
+}
+
 apply plugin: "forge"
 
 minecraft {
