@@ -50,7 +50,7 @@ artifacts {
 apply plugin: "forge"
 
 minecraft {
-	version = property("forge.version")
+	version = property("minecraft.version") + "-" + property("forge.version")
 	runDir = "run"
 }
 
