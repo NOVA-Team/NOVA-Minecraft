@@ -4,7 +4,7 @@ import nova.core.block.Block;
 import nova.core.component.ComponentManager;
 import nova.core.event.GlobalEvents;
 import nova.core.loader.Loadable;
-import nova.core.loader.NativeLoader;
+import nova.core.loader.Mod;
 import nova.core.world.World;
 import nova.wrapper.mc18.util.WrapperEvents;
 import org.apache.commons.math3.geometry.euclidean.threed.Vector3D;
@@ -13,9 +13,10 @@ import java.util.Optional;
 
 /**
  * The Minecraft native loader
+ *
  * @author Calclavia
  */
-@NativeLoader(forGame = "minecraft")
+@Mod(id = "redstone-minecraft", name = "Redstone Minecraft", version = "0.0.1", novaVersion = "0.0.1", priority = 1)
 public class RedstoneAPI implements Loadable {
 
 	private final ComponentManager componentManager;
