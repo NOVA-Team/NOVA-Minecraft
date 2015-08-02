@@ -14,12 +14,12 @@ nova {
 	wrappers {
 		"17" {
 			wrapper "nova.wrapper.mc1710:NovaWrapper-MC1.7.10:0.1-SNAPSHOT:deobf"
-			runtime project(":mc17")
+			runtime project(":minecraft:1.7")
 		}
 
 		"18" {
 			wrapper "nova.wrapper.mc18:NovaWrapper-MC1.8:0.1-SNAPSHOT:deobf"
-			runtime project(":mc18")
+			runtime project(":minecraft:1.8")
 		}
 	}
 }
@@ -29,7 +29,7 @@ publishing {
 		main(MavenPublication) {
 			from components.java
 
-			artifactId "NovaMinecraft"
+			artifactId "NOVA-Minecraft"
 
 			artifact sourcesJar
 			artifact javadocJar

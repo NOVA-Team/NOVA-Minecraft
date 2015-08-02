@@ -2,12 +2,12 @@
 /*
 
 # Except:
-!/LICENSE.*
+!LICENSE.txt
 
 # Sources
 !/src
-!/mc17
-!/mc18
+!/guidelines
+!/minecraft
 
 # github
 !/.gitignore
@@ -15,6 +15,7 @@
 
 # gradle
 !/build.gradle
+!/build.properties
 !/settings.gradle
 !/gradle.properties
 !/gradlew*
@@ -35,6 +36,3 @@
 ehthumbs.db
 Thumbs.db
 *~
-*.iml
-*.log
-.gradle/
