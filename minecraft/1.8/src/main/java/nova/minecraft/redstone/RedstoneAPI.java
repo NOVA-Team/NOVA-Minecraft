@@ -6,7 +6,7 @@ import nova.core.event.GlobalEvents;
 import nova.core.loader.Loadable;
 import nova.core.loader.Mod;
 import nova.core.world.World;
-import nova.wrapper.mc18.util.WrapperEvents;
+import nova.core.wrapper.mc18.util.WrapperEvents;
 import org.apache.commons.math3.geometry.euclidean.threed.Vector3D;
 
 import java.util.Optional;

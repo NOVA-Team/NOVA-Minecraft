@@ -3,7 +3,7 @@ package nova.minecraft.redstone;
 import net.minecraft.util.BlockPos;
 import net.minecraft.util.EnumFacing;
 import nova.core.block.Block;
-import nova.wrapper.mc18.wrapper.block.world.BWWorld;
+import nova.core.wrapper.mc18.wrapper.block.world.BWWorld;
 
 import java.util.function.Consumer;
 import java.util.stream.IntStream;
