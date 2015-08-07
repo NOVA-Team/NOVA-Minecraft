@@ -3,13 +3,14 @@ apply plugin: "com.jfrog.artifactory"
 apply from: "https://raw.githubusercontent.com/NOVA-Team/NOVA-Gradle/master/shared-scripts/java.gradle"
 
 idea.module.name = "Minecraft-MC-1.8"
+archivesBaseName = "NOVA-Minecraft-Wrapper-MC1.8"
 
 publishing {
 	publications {
 		main(MavenPublication) {
 			from components.java
 
-			artifactId "NovaMinecraft-Wrapper-MC1.8"
+			artifactId archivesBaseName
 
 			artifact sourcesJar
 			artifact javadocJar
@@ -42,8 +43,8 @@ minecraft {
 
 dependencies {
 	compile rootProject
-	compile group: "nova.core", name: "NovaCore", version: property("nova.version"), changing: true
-	compile "nova.wrapper.mc18:NovaWrapper-MC1.8:0.1-SNAPSHOT:deobf"
+	compile "nova.core:NOVA-Core:${property("nova.version")}"
+	compile "nova.core:NOVA-Core-Wrapper-MC1.8:${property("nova.version")}:deobf"
 }
 
 processResources {
