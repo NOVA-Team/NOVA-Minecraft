@@ -2,7 +2,7 @@ package nova.minecraft.wrench;
 
 import nova.core.component.Component;
 import nova.core.entity.Entity;
-import nova.core.event.EventBus;
+import nova.core.event.bus.EventBus;
 
 /**
  * Add to blocks that can be configured (via wrench)
