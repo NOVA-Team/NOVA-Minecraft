@@ -16,7 +16,7 @@ import java.util.Optional;
  *
  * @author Calclavia
  */
-@Mod(id = "redstone-minecraft", name = "Redstone Minecraft", version = "0.0.1", novaVersion = "0.0.1", priority = 1)
+@Mod(id = "redstone-minecraft", name = "Redstone Minecraft", version = "0.0.1", novaVersion = "0.0.1", priority = 1, modules = { ComponentModule.class })
 public class RedstoneAPI implements Loadable {
 
 	private final ComponentManager componentManager;
@@ -36,10 +36,6 @@ public class RedstoneAPI implements Loadable {
 				return "dummy";
 			}
 		};
-
-		//Registers Redstone Node
-		componentManager.register(args -> args.length > 0 ? new NodeRedstone((Block) args[0]) : new NodeRedstone(dummy));
-
 		events.on(WrapperEvent.RedstoneConnect.class).bind(evt -> evt.canConnect = getRedstoneNode(evt.world, evt.position).map(n -> n.canConnect.apply(null)).orElseGet(() -> false));
 
 		events.on(WrapperEvent.StrongRedstone.class).bind(evt -> evt.power = getRedstoneNode(evt.world, evt.position).map(Redstone::getOutputStrongPower).orElseGet(() -> 0));

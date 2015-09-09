@@ -12,7 +12,6 @@ import java.util.stream.IntStream;
  */
 //TODO: Create NodeVirtualRedstone (for MC blocks that are redstone, but don't implement NOVA)
 public class NodeRedstone extends Redstone {
-	public final Block block;
 	private boolean init = false;
 	private int inputStrongPower = 0;
 	private int inputWeakPower = 0;
@@ -22,10 +21,14 @@ public class NodeRedstone extends Redstone {
 	private Consumer<Redstone> onPowerChange = redstone -> {
 	};
 
-	public NodeRedstone(Block block) {
-		this.block = block;
+	private Block block() {
+		return (Block) getProvider();
+	}
+
+	@Override
+	public void onProviderChange() {
 		//Hook into the block's events.
-		block.events.add(evt -> recache(), Block.NeighborChangeEvent.class);
+		getProvider().events.on(Block.NeighborChangeEvent.class).bind(evt -> recache());
 	}
 
 	@Override
@@ -54,7 +57,7 @@ public class NodeRedstone extends Redstone {
 	@Override
 	public void setOutputStrongPower(int power) {
 		outputStrongPower = power;
-		block.world().markChange(block.position());
+		block().world().markChange(block().position());
 	}
 
 	@Override
@@ -76,7 +79,7 @@ public class NodeRedstone extends Redstone {
 	@Override
 	public void setOutputWeakPower(int power) {
 		outputWeakPower = power;
-		block.world().markChange(block.position());
+		block().world().markChange(block().position());
 	}
 
 	/**
@@ -86,20 +89,20 @@ public class NodeRedstone extends Redstone {
 		init = true;
 		boolean hasChanged = false;
 
-		int newInputStrongPower = mcWorld().getBlockPowerInput(block.x(), block.y(), block.z());
+		int newInputStrongPower = mcWorld().getBlockPowerInput(block().x(), block().y(), block().z());
 
 		if (inputStrongPower != newInputStrongPower) {
 			inputStrongPower = newInputStrongPower;
 			hasChanged = true;
 		}
 
-		int newInputWeakPower = mcWorld().getStrongestIndirectPower(block.x(), block.y(), block.z());
+		int newInputWeakPower = mcWorld().getStrongestIndirectPower(block().x(), block().y(), block().z());
 		if (inputWeakPower != newInputWeakPower) {
 			inputWeakPower = newInputWeakPower;
 			hasChanged = true;
 		}
 
-		int[] newInputSidedWeakPower = IntStream.range(0, 6).map(i -> mcWorld().getIndirectPowerLevelTo(block.x(), block.y(), block.z(), i)).toArray();
+		int[] newInputSidedWeakPower = IntStream.range(0, 6).map(i -> mcWorld().getIndirectPowerLevelTo(block().x(), block().y(), block().z(), i)).toArray();
 
 		if (inputSidedWeakPower != newInputSidedWeakPower) {
 			inputSidedWeakPower = newInputSidedWeakPower;
@@ -112,6 +115,6 @@ public class NodeRedstone extends Redstone {
 	}
 
 	private net.minecraft.world.World mcWorld() {
-		return ((BWWorld) block.world()).world();
+		return ((BWWorld) block().world()).world();
 	}
 }
