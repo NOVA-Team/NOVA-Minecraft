@@ -30,7 +30,7 @@ public class NodeRedstone extends Redstone {
 	@Override
 	public void onProviderChange() {
 		//Hook into the block's events.
-		getProvider().events.add(evt -> recache(), Block.NeighborChangeEvent.class);
+		getProvider().events.on(Block.NeighborChangeEvent.class).bind(evt -> recache());
 	}
 
 	@Override
