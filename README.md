@@ -4,6 +4,12 @@
 # Minecraft-Plugin
 A collection of NOVA features that are Minecraft-specific.
 
+## Workspace Setup
+Type the following command in the root directory of the repository.
+```
+gradlew setupDecompWorkspace idea
+```
+
 ### Dependency
 * NOVA-Core
 
