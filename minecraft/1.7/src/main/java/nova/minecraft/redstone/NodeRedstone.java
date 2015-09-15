@@ -1,7 +1,7 @@
 package nova.minecraft.redstone;
 
 import nova.core.block.Block;
-import nova.core.wrapper.mc17.wrapper.block.world.BWWorld;
+import nova.core.wrapper.mc.forge.v17.wrapper.block.world.BWWorld;
 
 import java.util.function.Consumer;
 import java.util.stream.IntStream;
