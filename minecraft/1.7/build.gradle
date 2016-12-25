@@ -29,8 +29,14 @@ artifactory {
 	}
 }
 
+task deobfJar(type: Jar) {
+	from sourceSets.main.output
+	classifier = 'deobf'
+}
+
 artifacts {
 	archives jar
+	archives deobfJar
 }
 
 apply plugin: "forge"
@@ -42,8 +48,8 @@ minecraft {
 
 dependencies {
 	compile rootProject
-	compile "nova.core:NOVA-Core:${property("nova.version")}"
-	compile "nova.core:NOVA-Core-Wrapper-MC1.7:${property("nova.version")}:deobf"
+	compile group: "nova.core", name: "NOVA-Core", version: property("nova_version"), changing: true
+	compile group: "nova.core", name: "NOVA-Core-Wrapper-MC1.7", version: property("nova_version"), classifier: "deobf", changing: true
 }
 
 processResources {
