@@ -8,7 +8,7 @@ plugins {
 apply from: "https://raw.githubusercontent.com/NOVA-Team/NOVA-Gradle/master/shared-scripts/java.gradle"
 
 dependencies {
-	compile nova(novaVersion)
+	compile nova(nova_version)
 }
 
 nova {
