@@ -1,4 +1,9 @@
 rootProject.name = 'NOVA-Minecraft'
 
+include "minecraft:1.11"
 include "minecraft:1.8"
 include "minecraft:1.7"
+
+project(":minecraft:1.11").name = "NOVA-Minecraft-Wrapper-MC1.11"
+project(":minecraft:1.8").name = "NOVA-Minecraft-Wrapper-MC1.8"
+project(":minecraft:1.7").name = "NOVA-Minecraft-Wrapper-MC1.7"

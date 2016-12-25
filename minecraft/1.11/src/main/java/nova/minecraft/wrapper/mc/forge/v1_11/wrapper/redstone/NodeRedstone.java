@@ -1,9 +1,10 @@
-package nova.minecraft.redstone;
+package nova.minecraft.wrapper.mc.forge.v1_11.wrapper.redstone;
 
-import net.minecraft.util.BlockPos;
 import net.minecraft.util.EnumFacing;
+import net.minecraft.util.math.BlockPos;
 import nova.core.block.Block;
-import nova.core.wrapper.mc.forge.v18.wrapper.block.world.BWWorld;
+import nova.core.wrapper.mc.forge.v1_11.wrapper.block.world.BWWorld;
+import nova.minecraft.redstone.Redstone;
 
 import java.util.function.Consumer;
 import java.util.stream.IntStream;

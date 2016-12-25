@@ -1,5 +1,6 @@
-package nova.minecraft.redstone;
+package nova.minecraft.wrapper.mc.forge.v1_11.wrapper.redstone;
 
+import nova.minecraft.redstone.Redstone;
 import se.jbee.inject.bind.BinderModule;
 
 /**

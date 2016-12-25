@@ -2,15 +2,15 @@ apply plugin: "maven-publish"
 apply plugin: "com.jfrog.artifactory"
 apply from: "https://raw.githubusercontent.com/NOVA-Team/NOVA-Gradle/master/shared-scripts/java.gradle"
 
-idea.module.name = "Minecraft-MC-1.8"
-archivesBaseName = "NOVA-Minecraft-Wrapper-MC1.8"
+idea.module.name = "Minecraft-MC-1.11"
+archivesBaseName = "NOVA-Minecraft-Wrapper-MC1.11"
 
 publishing {
 	publications {
 		main(MavenPublication) {
 			from components.java
 
-			artifactId archivesBaseName
+			artifactId "NOVA-Minecraft-Wrapper-MC1.11"
 
 			artifact sourcesJar
 			artifact javadocJar
@@ -39,18 +39,18 @@ artifacts {
 	archives deobfJar
 }
 
-apply plugin: "forge"
+apply plugin: 'net.minecraftforge.gradle.forge'
 
 minecraft {
 	version = property("minecraft.version") + "-" + property("forge.version")
-	mappings = "stable_nodoc_16"
+	mappings = 'snapshot_20161111'
 	runDir = "run"
 }
 
 dependencies {
 	compile rootProject
 	compile group: "nova.core", name: "NOVA-Core", version: property("nova_version"), changing: true
-	compile "nova.core:NOVA-Core-Wrapper-MC1.8:${nova_version}:deobf"
+	compile "nova.core:NOVA-Core-Wrapper-MC1.11:${nova_version}:deobf"
 }
 
 processResources {

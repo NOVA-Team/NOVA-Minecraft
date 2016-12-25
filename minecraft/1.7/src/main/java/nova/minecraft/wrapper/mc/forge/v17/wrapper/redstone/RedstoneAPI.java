@@ -1,11 +1,12 @@
-package nova.minecraft.redstone;
+package nova.minecraft.wrapper.mc.forge.v17.wrapper.redstone;
 
 import nova.core.block.Block;
 import nova.core.event.bus.GlobalEvents;
 import nova.core.loader.Loadable;
 import nova.core.loader.Mod;
 import nova.core.world.World;
-import nova.core.wrapper.mc.forge.v18.util.WrapperEvent;
+import nova.core.wrapper.mc.forge.v17.util.WrapperEvent;
+import nova.minecraft.redstone.Redstone;
 import org.apache.commons.math3.geometry.euclidean.threed.Vector3D;
 
 import java.util.Optional;
