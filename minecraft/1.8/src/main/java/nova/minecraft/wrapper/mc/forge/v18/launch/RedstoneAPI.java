@@ -1,4 +1,4 @@
-package nova.minecraft.wrapper.mc.forge.v18.wrapper.redstone;
+package nova.minecraft.wrapper.mc.forge.v18.launch;
 
 import nova.core.block.Block;
 import nova.core.event.bus.GlobalEvents;
@@ -10,6 +10,8 @@ import nova.minecraft.redstone.Redstone;
 import org.apache.commons.math3.geometry.euclidean.threed.Vector3D;
 
 import java.util.Optional;
+
+import nova.minecraft.wrapper.mc.forge.v18.depmodules.ComponentModule;
 
 /**
  * The Minecraft native loader
@@ -26,11 +28,17 @@ public class RedstoneAPI implements Loadable {
 
 	@Override
 	public void preInit() {
-		events.on(WrapperEvent.RedstoneConnect.class).bind(evt -> evt.canConnect = getRedstoneNode(evt.world, evt.position).map(n -> n.canConnect.apply(null)).orElseGet(() -> false));
+		events.on(WrapperEvent.RedstoneConnect.class)
+			.bind(evt -> evt.canConnect = getRedstoneNode(evt.world, evt.position)
+				.map(n -> n.canConnect.apply(null)).orElseGet(() -> false));
 
-		events.on(WrapperEvent.StrongRedstone.class).bind(evt -> evt.power = getRedstoneNode(evt.world, evt.position).map(Redstone::getOutputStrongPower).orElseGet(() -> 0));
+		events.on(WrapperEvent.StrongRedstone.class)
+			.bind(evt -> evt.power = getRedstoneNode(evt.world, evt.position)
+				.map(Redstone::getOutputStrongPower).orElseGet(() -> 0));
 
-		events.on(WrapperEvent.WeakRedstone.class).bind(evt -> evt.power = getRedstoneNode(evt.world, evt.position).map(Redstone::getOutputWeakPower).orElseGet(() -> 0));
+		events.on(WrapperEvent.WeakRedstone.class)
+			.bind(evt -> evt.power = getRedstoneNode(evt.world, evt.position)
+				.map(Redstone::getOutputWeakPower).orElseGet(() -> 0));
 	}
 
 	public Optional<Redstone> getRedstoneNode(World world, Vector3D pos) {

@@ -1,6 +1,7 @@
-package nova.minecraft.wrapper.mc.forge.v18.wrapper.redstone;
+package nova.minecraft.wrapper.mc.forge.v17.depmodules;
 
 import nova.minecraft.redstone.Redstone;
+import nova.minecraft.wrapper.mc.forge.v17.wrapper.redstone.forward.FWRedstone;
 import se.jbee.inject.bind.BinderModule;
 
 /**
@@ -9,6 +10,6 @@ import se.jbee.inject.bind.BinderModule;
 public class ComponentModule extends BinderModule {
 	@Override
 	protected void declare() {
-		bind(Redstone.class).to(NodeRedstone.class);
+		bind(Redstone.class).to(FWRedstone.class);
 	}
 }
