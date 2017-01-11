@@ -1,27 +1,31 @@
 plugins {
 	id "java"
-	id "nova.gradle" version "0.2.5"
+	id "nova.gradle" version "0.2.6"
 	id "maven-publish"
 	id "com.jfrog.artifactory" version "3.1.1"
 }
 
-
 apply from: "https://raw.githubusercontent.com/NOVA-Team/NOVA-Gradle/master/shared-scripts/java.gradle"
 
 dependencies {
-	compile nova(novaVersion)
+	compile nova(nova_version)
 }
 
 nova {
 	wrappers {
 		"17" {
-			wrapper "nova.core:NOVA-Core-Wrapper-MC1.7:$novaVersion"
+			wrapper "nova.core:NOVA-Core-Wrapper-MC1.7:$nova_version"
 			runtime project(":minecraft:1.7")
 		}
 
 		"18" {
-			wrapper "nova.core:NOVA-Core-Wrapper-MC1.8:$novaVersion"
+			wrapper "nova.core:NOVA-Core-Wrapper-MC1.8:$nova_version"
 			runtime project(":minecraft:1.8")
+		}
+
+		"1_11" {
+			wrapper "nova.core:NOVA-Core-Wrapper-MC1.11:$nova_version"
+			runtime project(":minecraft:1.11")
 		}
 	}
 }

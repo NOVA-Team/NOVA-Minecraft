@@ -1,7 +1,10 @@
-package nova.minecraft.redstone;
+package nova.minecraft.wrapper.mc.forge.v18.wrapper.redstone.forward;
 
+import net.minecraft.util.BlockPos;
+import net.minecraft.util.EnumFacing;
 import nova.core.block.Block;
-import nova.core.wrapper.mc.forge.v17.wrapper.block.world.BWWorld;
+import nova.core.wrapper.mc.forge.v18.wrapper.block.world.BWWorld;
+import nova.minecraft.redstone.Redstone;
 
 import java.util.function.Consumer;
 import java.util.stream.IntStream;
@@ -11,7 +14,7 @@ import java.util.stream.IntStream;
  * @author Calclavia
  */
 //TODO: Create NodeVirtualRedstone (for MC blocks that are redstone, but don't implement NOVA)
-public class NodeRedstone extends Redstone {
+public class FWRedstone extends Redstone {
 	private boolean init = false;
 	private int inputStrongPower = 0;
 	private int inputWeakPower = 0;
@@ -89,20 +92,20 @@ public class NodeRedstone extends Redstone {
 		init = true;
 		boolean hasChanged = false;
 
-		int newInputStrongPower = mcWorld().getBlockPowerInput(block().x(), block().y(), block().z());
+		int newInputStrongPower = mcWorld().getStrongPower(new BlockPos(block().x(), block().y(), block().z()));
 
 		if (inputStrongPower != newInputStrongPower) {
 			inputStrongPower = newInputStrongPower;
 			hasChanged = true;
 		}
 
-		int newInputWeakPower = mcWorld().getStrongestIndirectPower(block().x(), block().y(), block().z());
+		int newInputWeakPower = mcWorld().isBlockIndirectlyGettingPowered(new BlockPos(block().x(), block().y(), block().z()));
 		if (inputWeakPower != newInputWeakPower) {
 			inputWeakPower = newInputWeakPower;
 			hasChanged = true;
 		}
 
-		int[] newInputSidedWeakPower = IntStream.range(0, 6).map(i -> mcWorld().getIndirectPowerLevelTo(block().x(), block().y(), block().z(), i)).toArray();
+		int[] newInputSidedWeakPower = IntStream.range(0, 6).map(i -> mcWorld().getRedstonePower(new BlockPos(block().x(), block().y(), block().z()), EnumFacing.values()[i])).toArray();
 
 		if (inputSidedWeakPower != newInputSidedWeakPower) {
 			inputSidedWeakPower = newInputSidedWeakPower;
