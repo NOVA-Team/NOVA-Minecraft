@@ -1,7 +1,8 @@
-package nova.minecraft.redstone;
+package nova.minecraft.wrapper.mc.forge.v1_7_10.wrapper.redstone.forward;
 
 import nova.core.block.Block;
 import nova.core.wrapper.mc.forge.v17.wrapper.block.world.BWWorld;
+import nova.minecraft.redstone.Redstone;
 
 import java.util.function.Consumer;
 import java.util.stream.IntStream;
@@ -11,7 +12,7 @@ import java.util.stream.IntStream;
  * @author Calclavia
  */
 //TODO: Create NodeVirtualRedstone (for MC blocks that are redstone, but don't implement NOVA)
-public class NodeRedstone extends Redstone {
+public class FWRedstone extends Redstone {
 	private boolean init = false;
 	private int inputStrongPower = 0;
 	private int inputWeakPower = 0;
